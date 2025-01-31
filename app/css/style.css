@@ -1,0 +1,130 @@
+html{
+    display: block;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+main{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+
+}
+.list-buttons{
+    width: 300px;
+    min-width: 300px;
+}
+button{
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+
+}
+
+input {
+   width: 250px;
+   height: 40px;
+    outline: none;    
+    border: none;
+    background: transparent;
+    overflow: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    direction: rtl;
+    font-size: 30px;
+}
+.div-input{
+    width: 250px;
+    height: 50px;
+    background-color: #ABA194;
+    background-image: linear-gradient(to bottom,#D8DDDE, #D8DDDE80 );
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    overflow: hidden;
+}
+.container{
+    background-color: #E2E9F3;
+}
+.button-0{
+    width: 115px;
+    border-radius: 30%;
+}
+.container,
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 3%;
+    
+}
+.input{
+    height: 100px;
+}
+.back-h3{
+    height: 50px;
+    width: 250px;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    
+    background-color:#D8DDDE80 ;
+    background-image: linear-gradient(to top,#D8DDDE80,#D8DDDE );
+    padding: 4px auto;
+}
+h3{
+    height: 20px;
+    max-width: 250px;
+    overflow: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    opacity: 35%;
+
+}
+button:hover{
+    opacity: 80%;
+}
+
+/* Estilos iniciales del botón */
+.btn-wave {
+    position: relative;
+    overflow: hidden;  /* Para ocultar la onda cuando se sale del botón */
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+  }
+  .btn-wave:active::after {
+    content: '';  /* Necesario para generar un pseudo-elemento */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;  /* Tamaño inicial de la onda */
+    height: 300%;
+    background: rgba(255, 255, 255, .3);  /* Color de la onda */
+    border-radius: 50%;  /* Hace la onda circular */
+    transform: translate(-50%, -50%);  /* Centra la onda en el clic */
+    animation: wave 0.1s ease-in;  /* Animación de la onda */
+  }
+
+  .number{
+    background-color: #C9D5E8;
+  }
