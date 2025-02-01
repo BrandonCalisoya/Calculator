@@ -35,16 +35,17 @@ button{
 
 }
 
-input {
+.text-calc{
    width: 250px;
    height: 40px;
-    outline: none;    
+    
     border: none;
     background: transparent;
     overflow: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     direction: rtl;
     font-size: 45px;
+    margin: auto
 }
 .div-input{
     width: 250px;
