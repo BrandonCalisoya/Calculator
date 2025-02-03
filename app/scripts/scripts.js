@@ -129,6 +129,14 @@ parte interaccion DOM
     * 
 */
 
+let firstValue;
+let operation;
+let secondValue;
+
+let pantallavalores;
+
+let resultx;
+
 const d = document
 
 const parrafo = d.getElementById("text");
@@ -139,12 +147,56 @@ calculadorafunciones.addEventListener("click", (e)=>{
     if(e.target.tagName === "BUTTON"){
         const tipo = e.target.getAttribute("data-type");
         const valor = e.target.getAttribute("data-value");
+        
+        if(tipo == "operador" ){
+            firstValue = parrafo.textContent
+            console.log(typeof firstValue);
+        }else{
             parrafo.textContent += valor;
+
+        }
+
+        if (e.target.getAttribute === "equal"){
+            //se suman ambos valores
+        }
         //console.log(tipo + valor);
-        if(e.target.getAttribute === "equal"){
-            calculator()
+        if(tipo == "equal"){
+            console.log("funciona el equal")
         }
     }
 })
 //problema
+
+console.log(firstValue)
+
+//en la pantalla tiene que verse el primer valor.. luego agregarse la operacion
+
+
+// si la operacionn tiene los dos valores
+function operationIsReady(){
+    if(firstValue !== "" && secondValue !=="" ){
+        return true;
+    }
+
+}
+
+//la calculadora debe hacer lo siguiente, primero que nada... debe funcionar con 2 valores
+/*una while que tenga la condicion de si la operacion esta lista.. es decir... 
+debe tener 2 valores y su operador..
+
+cuando se presiones equal.. ambos interaccionan..
+
+aun no pondremos la funcionalidad para que actue con mas valores.. en caso de que se tenga que usar eval() se puede emplear
+pero la idea es no usarlo, porque facilita el trabajo.. solo necesito practicar la logica de las cosas.
+
+luego podemos usar un sistema de arrays para que ingresen varios valores
+[valor1, operador(agregar un identifcador),valor2, operador(identificador), valor3(identificador).....]
+los identificadores daran la prioridad para hacer el valor anterior y el valor siguiente
+
+por ejemplo..
+
+idenfificador de mayor prioridad == se hace mas antes que los demas.. como () o X (en este caso, como no hay parentesis, no usaremos logica para parentesis,
+en caso de que querramos hacer una calculadora cientifica.. puede ser)*/
+
+
 
