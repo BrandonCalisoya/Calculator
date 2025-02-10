@@ -43,7 +43,7 @@ button{
     background: transparent;
     overflow: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    direction: rtl;
+    text-align: right;
     font-size: 45px;
     margin: auto
 }

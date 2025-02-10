@@ -23,7 +23,7 @@ crear funciones para los botones
 cada que se presione un boton de signo o se va añadiendo numeros en un array
 
 */ 
-
+/*
 function isANumber(args){
     //tiene que ser un numero
     if(args==="/[^0-9]"){
@@ -74,7 +74,7 @@ console.log("funciona  div " + calculator("divide", 1,2,3,4,5))
 */
 
 
-
+/*
 //console.log(deleteLastValue("hola"))
 
 //  * borra el ultimo valor ingresado
@@ -114,7 +114,7 @@ function divide(...args){
     return calculator("divide", ...args)
 }
 
-
+*/
 /*
 
 parte interaccion DOM
@@ -129,18 +129,30 @@ parte interaccion DOM
     * 
 */
 
-let firstValue;
-let operation;
-let secondValue;
+let aux;
+let firstValue="";
+let operation="";
+let secondValue="";
+
+let operatorWindow;
 
 let pantallavalores;
 
-let resultx;
+let resultx = false;
+
+
+//arreglo 2
+let itsNewOperation= true;
+while(!itsNewOperation){
+
+
+    itsNewOperation = false;
+}
 
 const d = document
 
-const parrafo = d.getElementById("text");
-
+const numberWindow = d.getElementById("text");
+const lastResult = d.getElementById("lastResult");
 
 const calculadorafunciones = d.getElementById("calculator");
 calculadorafunciones.addEventListener("click", (e)=>{
@@ -148,27 +160,76 @@ calculadorafunciones.addEventListener("click", (e)=>{
         const tipo = e.target.getAttribute("data-type");
         const valor = e.target.getAttribute("data-value");
         
-        if(tipo == "operador" ){
-            firstValue = parrafo.textContent
-            console.log(typeof firstValue);
-        }else{
-            parrafo.textContent += valor;
+    
 
-        }
+        if(tipo === "number"){
+            if(resultx === true){
+                numberWindow.textContent = ""
+                resultx = false
+            }
+            
+            numberWindow.textContent += valor;
+            
+        }else if(tipo === "operador"){
 
-        if (e.target.getAttribute === "equal"){
-            //se suman ambos valores
+            operation = valor;
+            firstValue = numberWindow.textContent;
+          
+            //reset del valor de pantalla
+            numberWindow.textContent = "";
+            
+            
+            
+            
+            
+        }else if(tipo === "equal"){
+            secondValue = numberWindow.textContent
+            numberWindow.textContent = "";
+
+            numberWindow.textContent = operationPrueba(operation, firstValue,secondValue);
+            firstValue = "";
+            secondValue = "";
+            lastResult.textContent= numberWindow.textContent;
+
+            resultx = true;
+            /*si quiero hacer una nueva operacion
+                necesito primero... el valor principal guardarlo en el window de arriba
+                luego.. borrar el window principal para tener una nueva operation
+                pero como le hago? caundo vuelva a presionar los numeros... deberian primero dejar los 
+
+            
+            */
+            
+        }else if(tipo === "CE"){
+
+            numberWindow.textContent = deleteLastValue(numberWindow.textContent)
+        }else if (tipo === "C"){
+            numberWindow.textContent = "";
         }
-        //console.log(tipo + valor);
-        if(tipo == "equal"){
-            console.log("funciona el equal")
-        }
+        
+
+        
     }
 })
-//problema
 
-console.log(firstValue)
+function operationPrueba (operador, valor1, valor2){
+    valor1 =Number(valor1);
+    valor2 = Number(valor2)
 
+
+    if(operador ==="add")return valor1 + valor2;
+    if(operador ==="substract")return valor1 - valor2;
+    if(operador ==="multiply")return valor1 * valor2;
+    if(operador ==="divide"){
+        if(valor2 == 0){
+            console.log("no se puede divividr entre 0")
+        }
+        return valor1 / valor2;
+    }
+        
+    if(operador ==="divide")return valor1 % valor2;
+
+}
 //en la pantalla tiene que verse el primer valor.. luego agregarse la operacion
 
 
@@ -180,23 +241,15 @@ function operationIsReady(){
 
 }
 
-//la calculadora debe hacer lo siguiente, primero que nada... debe funcionar con 2 valores
-/*una while que tenga la condicion de si la operacion esta lista.. es decir... 
-debe tener 2 valores y su operador..
 
-cuando se presiones equal.. ambos interaccionan..
+function deleteLastValue(value){
+    value = value.slice(0,-1)
+    console.log(value)
+    return value;
+    
+}
 
-aun no pondremos la funcionalidad para que actue con mas valores.. en caso de que se tenga que usar eval() se puede emplear
-pero la idea es no usarlo, porque facilita el trabajo.. solo necesito practicar la logica de las cosas.
-
-luego podemos usar un sistema de arrays para que ingresen varios valores
-[valor1, operador(agregar un identifcador),valor2, operador(identificador), valor3(identificador).....]
-los identificadores daran la prioridad para hacer el valor anterior y el valor siguiente
-
-por ejemplo..
-
-idenfificador de mayor prioridad == se hace mas antes que los demas.. como () o X (en este caso, como no hay parentesis, no usaremos logica para parentesis,
-en caso de que querramos hacer una calculadora cientifica.. puede ser)*/
-
-
-
+/*tarea para la siguiente,
+    en la pantalla debe visualizarse la operacion que se realice
+        posiblemente con una variable alterna que permite ver la pantalla o poner cada valor con sus variables. y no tocar el textcontent de ese cuadro
+*/
